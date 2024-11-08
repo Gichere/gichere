@@ -3,108 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francis Gichere - Data Scientist & Consultant</title>
+    <title>Francis Gichere - Data Scientist & Technical Leader</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">FG</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact" class="cta-button">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Header Section -->
-    <header class="hero">
-        <div class="container">
-            <h1>Francis Gichere</h1>
-            <p class="subheading">Data Scientist | Technical Leader | Consultant</p>
-            <p class="contact-info">
-                Nairobi, Kenya | <a href="mailto:francisgichere@gmail.com">francisgichere@gmail.com</a> | 
-                <a href="https://www.linkedin.com/in/gichere/" target="_blank">LinkedIn</a>
-            </p>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="glitch-text">Francis Gichere</h1>
+                <p class="subtitle">Data Scientist | Technical Leader | Consultant</p>
+                <div class="location-bar">
+                    <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                </div>
+                <div class="social-links">
+                    <a href="mailto:francisgichere@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/gichere/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- About Section -->
-    <section class="about container">
-        <h2>About Me</h2>
-        <p>
-            I am an experienced data scientist with over 5 years in developing high-impact data solutions for manufacturing, FMCG, and e-commerce. I specialize in self-service BI platforms, machine learning, and AI solutions, empowering teams, enhancing customer insights, and driving strategic growth.
-        </p>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="highlight-text">
+                        Transforming data into actionable insights and building intelligent solutions 
+                        that drive business growth.
+                    </p>
+                    <p>
+                        With over 5 years of experience in data science, I specialize in developing 
+                        high-impact solutions for manufacturing, FMCG, and e-commerce sectors. My expertise 
+                        lies in creating self-service BI platforms, implementing machine learning models, 
+                        and delivering AI solutions that empower teams and enhance customer insights.
+                    </p>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Core Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">BERT</span>
+                            <span class="skill-tag">LSTM</span>
+                            <span class="skill-tag">Classification</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Data</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">Airflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experience Section -->
-    <section class="experience container">
-        <h2>Professional Experience</h2>
-        
-        <div class="job">
-            <h3>BURN Manufacturing USA LLC</h3>
-            <p><strong>Data Scientist</strong> | April 2022 – Present</p>
-            <ul>
-                <li>Strategized and implemented a self-service BI platform in Metabase, increasing engagement by 41% and efficiency by 70%.</li>
-                <li>Developed Ecoa DataSense, an AI-driven analytics platform for senior management, leveraging GPT NeoX, Langchain, and RAG.</li>
-                <li>Engineered an analytics pipeline consolidating data from 9 sources, enhancing reporting efficiency by over 30%.</li>
-            </ul>
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>BURN Manufacturing USA LLC</h3>
+                        <p class="timeline-title">Data Scientist</p>
+                        <p class="timeline-date">April 2022 – Present</p>
+                        <ul class="achievement-list">
+                            <li>Implemented self-service BI platform increasing engagement by 41%</li>
+                            <li>Developed Ecoa DataSense AI analytics platform</li>
+                            <li>Engineered multi-source analytics pipeline</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Prospect 33</h3>
+                        <p class="timeline-title">Data Science Research Fellow</p>
+                        <p class="timeline-date">May 2024 – Sept 2024</p>
+                        <ul class="achievement-list">
+                            <li>Researched financial crime detection models</li>
+                            <li>Developed dataset control rules</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="job">
-            <h3>Prospect 33</h3>
-            <p><strong>Data Science Research Fellow</strong> | May 2024 – Sept 2024</p>
-            <ul>
-                <li>Researched anomaly detection models for financial crime detection, contributing to model interpretability in banking.</li>
-                <li>Developed dataset control rules in Python/SQL to improve data validation.</li>
-            </ul>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Ecoa DataSense">
+                    </div>
+                    <div class="project-content">
+                        <h3>Ecoa DataSense</h3>
+                        <p>AI-driven analytics platform leveraging GPT NeoX and RAG</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>LangChain</span>
+                            <span>RAG</span>
+                        </div>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="BI Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>Self-Service BI Platform</h3>
+                        <p>Metabase-powered analytics platform with 70% efficiency boost</p>
+                        <div class="project-tags">
+                            <span>Metabase</span>
+                            <span>SQL</span>
+                            <span>Analytics</span>
+                        </div>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="job">
-            <h3>Loki Ventures Limited</h3>
-            <p><strong>Data Analyst</strong> | February 2021 – March 2022</p>
-            <ul>
-                <li>Designed customer segmentation and market mix models, boosting retention by 18% and increasing online sales by 28%.</li>
-            </ul>
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">Certifications & Education</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Data Science Specialization</h3>
+                    <p>Creating Data Products in Production</p>
+                    <a href="#" class="verify-link">Verify Certificate</a>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Anti-Financial Crime</h3>
+                    <p>Data Science Applications</p>
+                    <a href="#" class="verify-link">Verify Certificate</a>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Governance</h3>
+                    <p>Data Quality Frameworks</p>
+                    <a href="#" class="verify-link">Verify Certificate</a>
+                </div>
+            </div>
+            <div class="education-section">
+                <h3>Education</h3>
+                <div class="education-card">
+                    <h4>MSc in Data Science</h4>
+                    <p>University of East London (Ongoing)</p>
+                </div>
+                <div class="education-card">
+                    <h4>BSc in Statistics & Computer Science</h4>
+                    <p>Technical University of Mombasa</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services container">
-        <h2>Consulting Services</h2>
-        <p>I am available for consulting and part-time roles in the following areas:</p>
-        <ul>
-            <li><strong>Data Strategy & Analytics Consulting</strong> – Crafting data strategies, conducting maturity assessments, and optimizing data utilization for business growth.</li>
-            <li><strong>Self-Service Analytics Platforms</strong> – Building tailored platforms to empower non-technical teams to explore, analyze, and visualize data independently.</li>
-            <li><strong>AI & Machine Learning Solutions</strong> – Developing predictive models, credit scoring systems, customer churn prediction, and next-best-offer solutions.</li>
-            <li><strong>Data Quality & Governance</strong> – Establishing data quality frameworks and governance policies to ensure accuracy and compliance.</li>
-            <li><strong>Custom Dashboards & Reporting</strong> – Creating real-time dashboards for KPI monitoring and automated report generation.</li>
-        </ul>
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Consulting Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Strategy & Analytics</h3>
+                    <p>Crafting data strategies and optimizing data utilization</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Self-Service Analytics</h3>
+                    <p>Building platforms for non-technical teams</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Developing predictive models and ML solutions</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Data Governance</h3>
+                    <p>Establishing quality frameworks and policies</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Education Section -->
-    <section class="education container">
-        <h2>Education</h2>
-        <p><strong>MSc in Data Science</strong> | University of East London (Ongoing)</p>
-        <p><strong>BSc in Statistics & Computer Science</strong> | Technical University of Mombasa</p>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:francisgichere@gmail.com">francisgichere@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/gichere/" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills container">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python, R, SQL</li>
-            <li>Machine Learning: Classification, Anomaly Detection, Clustering, LSTM, BERT</li>
-            <li>Cloud & Data Engineering: AWS, Azure, dbt, Airflow</li>
-            <li>Visualization: PowerBI, Tableau, Metabase</li>
-        </ul>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="certifications container">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Applied Data Science – Creating Data Products in Production</li>
-            <li>Data Science Applications in Anti-Financial Crime</li>
-            <li>Data Governance – Data Quality Frameworks</li>
-        </ul>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Francis Gichere | <a href="mailto:francisgichere@gmail.com">Contact Me</a></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Francis Gichere</p>
+                <div class="footer-links">
+                    <a href="#home">Top</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
     </footer>
-
 </body>
 </html>
