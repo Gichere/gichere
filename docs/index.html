@@ -161,20 +161,6 @@
             opacity: 1;
         }
 
-        .theme-toggle {
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--primary);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 10px var(--glow-cyan);
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(180deg);
-            color: var(--secondary);
-            text-shadow: 0 0 15px var(--glow-magenta);
-        }
-
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -895,12 +881,78 @@
 
             .hero-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
+            }
+
+            .terminal {
+                padding: 1.5rem;
             }
 
             .terminal-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
+            .typewriter {
+                font-size: 1rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .neural-viz {
+                height: 350px;
+            }
+
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* Stats */
+            .stats-section {
+                padding: 3rem 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Sections */
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            /* Cards */
+            .card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+
+            .data-card {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Timeline */
             .timeline::before {
                 left: 20px;
             }
@@ -914,6 +966,11 @@
 
             .timeline-content {
                 width: 100%;
+                padding: 1.5rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.2rem;
             }
 
             .timeline-content::before {
@@ -924,8 +981,54 @@
                 left: 20px;
             }
 
+            /* Contact */
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Reduce animations on mobile for performance */
+            .scanline {
+                display: none;
+            }
+
+            * {
+                animation-duration: 0.3s !important;
+                transition-duration: 0.3s !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terminal-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .typewriter {
+                font-size: 0.9rem;
+            }
+
             .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .card-icon {
                 font-size: 2rem;
+            }
+
+            .data-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .profile-container {
+                width: 180px;
+                height: 180px;
+            }
+
+            .neural-viz {
+                height: 300px;
             }
         }
 
@@ -988,10 +1091,7 @@
                 <li><a href="#education">education</a></li>
                 <li><a href="#contact">contact</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <i class="fas fa-circle-half-stroke theme-toggle" id="themeToggle"></i>
-                <i class="fas fa-bars mobile-menu-btn" id="mobileMenuBtn"></i>
-            </div>
+            <i class="fas fa-bars mobile-menu-btn" id="mobileMenuBtn"></i>
         </div>
     </nav>
 
@@ -1505,7 +1605,9 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 100;
+        // Reduce particles on mobile for better performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 30 : 100;
 
         class Particle {
             constructor() {
