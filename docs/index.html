@@ -5,204 +5,1343 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Francis Gichere - Senior Data Scientist</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-      body { font-family: 'Inter', sans-serif; }
-      .section-header { border-bottom: 2px solid #1e40af; }
-      .hover-scale { transition: transform 0.3s; }
-      .hover-scale:hover { transform: scale(1.05); }
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #2563eb;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: slide 30s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease 0.4s backwards;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(45deg, #fff, transparent);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Animated Stats */
+        .stats-section {
+            background: var(--bg-secondary);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Impact Cards */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-card {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--primary-color);
+            transition: height 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .impact-card:hover::before {
+            height: 100%;
+        }
+
+        .impact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .impact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .impact-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            order: 3;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            order: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:last-child {
+            order: 1;
+        }
+
+        .timeline-content {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-content .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 0 0 4px var(--border-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: var(--bg-secondary);
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-primary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 50px 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-item .timeline-content:first-child,
+            .timeline-item:nth-child(even) .timeline-content:first-child {
+                order: 2;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content:last-child {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 70%;
+            height: calc(100vh - 70px);
+            background: var(--bg-primary);
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
     </style>
-  </head>
-  <body class="bg-gray-100 text-gray-800">
-    <!-- Header -->
-    <header class="bg-blue-800 text-white py-12 text-center">
-      <h1 class="text-4xl font-bold">Francis Gichere</h1>
-      <p class="text-xl mt-2">Senior Data Scientist | Data Science Manager</p>
-      <p class="mt-4">
-        Nairobi, Kenya | <a href="https://www.linkedin.com/in/gichere/" target="_blank" class="underline">LinkedIn</a> | 
-        <a href="https://medium.com/@francisgichere" target="_blank" class="underline">Medium</a>
-      </p>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto py-12 px-6 space-y-12">
-      <!-- Overview -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Overview</h2>
-        <p class="text-lg">
-          Senior Data Scientist with 6+ years experience building data products across insurance, investment, manufacturing, climate, and FMCG. At CIC Group, I'm setting up the foundations for advanced analytics to shift the business toward data-driven decisions, with a clear focus on commercial outcomes. At BURN Manufacturing, I led the development of AI-powered self-service analytics that cut time-to-insight by over 90%, making operational decisions faster and more precise. I work best where technical depth and business impact are both expected
-        </p>
-      </section>
-
-      <!-- Impact Highlights -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Impact Highlights</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">AI-Powered Self-Service Analytics</h3>
-            <p>Developed an AI-driven platform with text-to-SQL generation, slashing time-to-insights by 90% and empowering senior management with real-time decisions.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Carbon Credit Optimization</h3>
-            <p>Built ML models analyzing IoT sensor data to optimize cookstove usage, enhancing carbon credit generation and ensuring 100% audit compliance for $500K+ grants.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Operational Efficiency</h3>
-            <p>Engineered analytics pipelines integrating 9 data sources, boosting reporting efficiency by 30% and improving stakeholder engagement by 41%.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Financial Crime Detection</h3>
-            <p>Designed anomaly detection solutions for banking, improving AUC-ROC scores by 15% and enhancing model interpretability with SHAP.</p>
-          </div>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">FG</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#consulting">Consulting</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <i class="fas fa-moon theme-toggle" id="themeToggle"></i>
+                <i class="fas fa-bars mobile-menu-btn" id="mobileMenuBtn"></i>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <!-- Skills -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <h3 class="font-medium">Programming</h3>
-            <p>Python (NumPy, Pandas, Scikit-Learn), R, SQL</p>
-          </div>
-          <div>
-            <h3 class="font-medium">Machine Learning</h3>
-            <p>Classification, Anomaly Detection, Clustering, NLP, Computer Vision</p>
-          </div>
-          <div>
-            <h3 class="font-medium">Data Engineering</h3>
-            <p>AWS (Redshift, Glue, S3), dbt, ETL Pipelines</p>
-          </div>
-          <div>
-            <h3 class="font-medium">BI & Visualization</h3>
-            <p>Power BI, Tableau, Metabase, Apache Superset</p>
-          </div>
-          <div>
-            <h3 class="font-medium">AI & NLP</h3>
-            <p>Generative AI, RAG, LangChain, Topic Modeling</p>
-          </div>
-          <div>
-            <h3 class="font-medium">Leadership</h3>
-            <p>Strategy, Agile, Stakeholder Alignment, OKR Setting</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Positions Held -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Positions Held</h2>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-medium">Senior Data Scientist, CIC Insurance Group</h3>
-            <p class="text-gray-600">June 2025 - Present, Nairobi, Kenya</p>
-            <p>Leads end-to-end data science projects that support key business priorities, from building machine learning models to delivering results that guide leadership decisions. Helps shape the organisation’s data strategy, supports team development, and ensures data science work is tied to real needs.</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-medium">Lead Data Scientist, BURN Manufacturing</h3>
-            <p class="text-gray-600">Dec 2024 - May 2025, Nairobi, Kenya</p>
-            <p>Leading AI/ML strategy, data governance, and self-service analytics, driving innovation in clean energy solutions.</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-medium">Data Scientist, BURN Manufacturing</h3>
-            <p class="text-gray-600">Apr 2022 - Dec 2024, Nairobi, Kenya</p>
-            <p>Developed predictive models and analytics platforms, enhancing operational efficiency and carbon credit accuracy.</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-medium">Data Scientist, Prospect33</h3>
-            <p class="text-gray-600">May 2024 - Sep 2024, New York, USA</p>
-            <p>Advanced anomaly detection for financial crime, improving model performance in banking datasets.</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-medium">Data Analyst, Loki Ventures & AMCenter</h3>
-            <p class="text-gray-600">2019 - 2022, Nairobi, Kenya</p>
-            <p>Optimized inventory, marketing, and pricing strategies, driving revenue and market share growth.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Roles Open To -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Roles Open To</h2>
-        <p class="text-lg">
-          I am open to leadership and senior-level opportunities in data science and AI, including:
-        </p>
-        <ul class="list-disc list-inside mt-2">
-          <li>Head of Data Science</li>
-          <li>Data Science Manager</li>
-          <li>Lead Data Scientist</li>
-          <li>Senior Data Scientist</li>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#impact" class="mobile-link">Impact</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#experience" class="mobile-link">Experience</a></li>
+            <li><a href="#consulting" class="mobile-link">Consulting</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
         </ul>
-      </section>
+    </div>
 
-      <!-- Education -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Education</h2>
-        <div class="space-y-4">
-          <div>
-            <h3 class="text-xl font-medium">MSc in Data Science (Ongoing)</h3>
-            <p class="text-gray-600">University of East London, May 2023 - Present</p>
-            <p>Specializing in Predictive Analytics, Machine Learning, and Spatial Data Analysis.</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-medium">BSc in Statistics & Computer Science</h3>
-            <p class="text-gray-600">Technical University of Mombasa, 2013 - 2018</p>
-            <p>Second Class Honors; Published research on education and performance metrics.</p>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Francis Gichere</h1>
+                <p class="tagline">Senior Data Scientist | Data Science Manager</p>
+                <p>
+                    Leading AI/ML innovation with 6+ years of experience building data products that drive measurable business impact across insurance, manufacturing, and financial services.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#consulting" class="btn btn-secondary">View Services</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/gichere/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
+                        <i class="fab fa-medium-m"></i>
+                    </a>
+                    <a href="mailto:francisgichere@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/gichere" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <img src="../images/profile.jpg" alt="Francis Gichere" class="profile-img">
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Consulting Services -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Consulting Services</h2>
-        <p class="text-lg mb-4">
-          I offer expert consulting to transform businesses through data-driven strategies and AI solutions. Partner with me to unlock actionable insights, streamline operations, and achieve commercial excellence.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Analytics & Data Science</h3>
-            <p>Design solutions like credit scoring, churn prediction, and customer lifetime value modeling to boost revenue and retention by up to 20%. Leverage computer vision and recommendation systems to personalize experiences, driving customer satisfaction.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Machine Learning Solutions</h3>
-            <p>Deploy models for default prediction using Markov chains and next-best-offer recommendations, reducing risks by 15% and optimizing sales strategies, enhancing profitability.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">Data Strategy & Governance</h3>
-            <p>Craft data strategies and governance frameworks to ensure compliance and scalability, reducing data-related costs by 10-20% and enabling robust decision-making.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover-scale">
-            <h3 class="text-xl font-medium">AI-Powered Self-Service Analytics</h3>
-            <p>Build platforms that empower teams with real-time insights, cutting decision-making time by 90%, reducing analytics costs, and boosting team productivity through intuitive, AI-driven tools.</p>
-          </div>
+    <!-- Animated Stats -->
+    <div class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card reveal">
+                <div class="stat-number" data-target="6">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number" data-target="90">0</div>
+                <div class="stat-label">% Time-to-Insight Reduction</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">K+ Grants Secured</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number" data-target="9">0</div>
+                <div class="stat-label">Data Sources Integrated</div>
+            </div>
         </div>
-        <p class="text-lg mt-4">
-          <a href="mailto:francisgichere@gmail.com" class="underline text-blue-600">Contact me</a> to discuss how I can help your organization achieve data-driven success.
-        </p>
-      </section>
+    </div>
 
-      <!-- Strategic Vision -->
-      <section>
-        <h2 class="text-2xl font-semibold section-header pb-2 mb-4">Strategic Vision</h2>
-        <p class="text-lg">
-          As a leader in data science and AI, I envision building ecosystems where data empowers innovation and drives measurable impact. My approach integrates cutting-edge AI/ML, robust data governance, and stakeholder collaboration to solve complex challenges. Whether optimizing clean energy solutions or enhancing financial systems, I aim to lead teams that deliver scalable, ethical, and transformative data strategies, aligning with organizational goals and societal needs.
-        </p>
-      </section>
-    </main>
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header reveal">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Senior Data Scientist with a proven track record of transforming data into strategic business value
+            </p>
+        </div>
+        <div class="reveal">
+            <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto; color: var(--text-secondary);">
+                Senior Data Scientist with 6+ years experience building data products across insurance, investment, manufacturing, climate, and FMCG. At CIC Group, I'm setting up the foundations for advanced analytics to shift the business toward data-driven decisions, with a clear focus on commercial outcomes. At BURN Manufacturing, I led the development of AI-powered self-service analytics that cut time-to-insight by over 90%, making operational decisions faster and more precise. I work best where technical depth and business impact are both expected.
+            </p>
+        </div>
+    </section>
+
+    <!-- Impact Highlights -->
+    <section id="impact" style="background: var(--bg-secondary);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Impact Highlights</h2>
+            <p class="section-subtitle">Delivering measurable results through data science and AI</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-robot"></i></div>
+                <h3>AI-Powered Self-Service Analytics</h3>
+                <p>Developed an AI-driven platform with text-to-SQL generation, slashing time-to-insights by 90% and empowering senior management with real-time decisions.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Carbon Credit Optimization</h3>
+                <p>Built ML models analyzing IoT sensor data to optimize cookstove usage, enhancing carbon credit generation and ensuring 100% audit compliance for $500K+ grants.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Operational Efficiency</h3>
+                <p>Engineered analytics pipelines integrating 9 data sources, boosting reporting efficiency by 30% and improving stakeholder engagement by 41%.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Financial Crime Detection</h3>
+                <p>Designed anomaly detection solutions for banking, improving AUC-ROC scores by 15% and enhancing model interpretability with SHAP.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header reveal">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">Technical proficiency across the data science stack</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-code"></i> Programming & Tools</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Python</span><span>95%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>SQL</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>R</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Classification & Regression</span><span>95%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Anomaly Detection</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>NLP & Computer Vision</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-database"></i> Data Engineering</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>AWS (Redshift, S3, Glue)</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>ETL Pipelines</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>dbt</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-chart-bar"></i> BI & Visualization</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Power BI</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Tableau</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Metabase & Superset</span><span>88%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-robot"></i> AI & Generative AI</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>LangChain & RAG</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Text-to-SQL</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Topic Modeling</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <h3><i class="fas fa-users"></i> Leadership & Strategy</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Team Leadership</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Stakeholder Management</span><span>92%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Agile & OKR Setting</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" style="background: var(--bg-secondary);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">A journey of impact and innovation</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Senior Data Scientist</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> June 2025 - Present</div>
+                    <p><strong>CIC Insurance Group, Nairobi, Kenya</strong></p>
+                    <p>Leads end-to-end data science projects that support key business priorities, from building machine learning models to delivering results that guide leadership decisions. Helps shape the organisation's data strategy, supports team development, and ensures data science work is tied to real needs.</p>
+                </div>
+                <div class="timeline-marker"><div class="timeline-dot"></div></div>
+                <div class="timeline-content"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content"></div>
+                <div class="timeline-marker"><div class="timeline-dot"></div></div>
+                <div class="timeline-content">
+                    <h3>Lead Data Scientist</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> Dec 2024 - May 2025</div>
+                    <p><strong>BURN Manufacturing, Nairobi, Kenya</strong></p>
+                    <p>Leading AI/ML strategy, data governance, and self-service analytics, driving innovation in clean energy solutions.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Data Scientist</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> Apr 2022 - Dec 2024</div>
+                    <p><strong>BURN Manufacturing, Nairobi, Kenya</strong></p>
+                    <p>Developed predictive models and analytics platforms, enhancing operational efficiency and carbon credit accuracy.</p>
+                </div>
+                <div class="timeline-marker"><div class="timeline-dot"></div></div>
+                <div class="timeline-content"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content"></div>
+                <div class="timeline-marker"><div class="timeline-dot"></div></div>
+                <div class="timeline-content">
+                    <h3>Data Scientist</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> May 2024 - Sep 2024</div>
+                    <p><strong>Prospect33, New York, USA</strong></p>
+                    <p>Advanced anomaly detection for financial crime, improving model performance in banking datasets.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Data Analyst</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> 2019 - 2022</div>
+                    <p><strong>Loki Ventures & AMCenter, Nairobi, Kenya</strong></p>
+                    <p>Optimized inventory, marketing, and pricing strategies, driving revenue and market share growth.</p>
+                </div>
+                <div class="timeline-marker"><div class="timeline-dot"></div></div>
+                <div class="timeline-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting Services -->
+    <section id="consulting">
+        <div class="section-header reveal">
+            <h2 class="section-title">Consulting Services</h2>
+            <p class="section-subtitle">Transform your business through data-driven strategies and AI solutions</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Analytics & Data Science</h3>
+                <p>Design solutions like credit scoring, churn prediction, and customer lifetime value modeling to boost revenue and retention by up to 20%. Leverage computer vision and recommendation systems to personalize experiences, driving customer satisfaction.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-microchip"></i></div>
+                <h3>Machine Learning Solutions</h3>
+                <p>Deploy models for default prediction using Markov chains and next-best-offer recommendations, reducing risks by 15% and optimizing sales strategies, enhancing profitability.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Data Strategy & Governance</h3>
+                <p>Craft data strategies and governance frameworks to ensure compliance and scalability, reducing data-related costs by 10-20% and enabling robust decision-making.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-magic"></i></div>
+                <h3>AI-Powered Self-Service Analytics</h3>
+                <p>Build platforms that empower teams with real-time insights, cutting decision-making time by 90%, reducing analytics costs, and boosting team productivity through intuitive, AI-driven tools.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" style="background: var(--bg-secondary);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Education</h2>
+        </div>
+        <div class="impact-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>MSc in Data Science (Ongoing)</h3>
+                <p><strong>University of East London</strong></p>
+                <p class="date"><i class="fas fa-calendar"></i> May 2023 - Present</p>
+                <p>Specializing in Predictive Analytics, Machine Learning, and Spatial Data Analysis.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>BSc in Statistics & Computer Science</h3>
+                <p><strong>Technical University of Mombasa</strong></p>
+                <p class="date"><i class="fas fa-calendar"></i> 2013 - 2018</p>
+                <p>Second Class Honors; Published research on education and performance metrics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to collaborate? Get in touch and let's discuss how we can work together</p>
+            </div>
+            <form class="reveal" id="contactForm">
+                <div class="contact-grid">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: var(--text-secondary);">Or email directly: <a href="mailto:francisgichere@gmail.com" style="color: var(--primary-color); font-weight: 600;">francisgichere@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-800 text-white text-center py-6">
-      <p>© 2025 Francis Gichere. All rights reserved.</p>
+    <footer>
+        <div class="social-links" style="justify-content: center; margin-bottom: 1rem;">
+            <a href="https://www.linkedin.com/in/gichere/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
+                <i class="fab fa-medium-m"></i>
+            </a>
+            <a href="mailto:francisgichere@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/gichere" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p style="color: var(--text-secondary);">© 2025 Francis Gichere. All rights reserved.</p>
     </footer>
 
     <script>
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeIcon(theme);
         });
-      });
+
+        function updateThemeIcon(theme) {
+            themeToggle.className = theme === 'light' ? 'fas fa-moon theme-toggle' : 'fas fa-sun theme-toggle';
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Timeline Animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const timelineReveal = () => {
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                const itemVisible = 150;
+
+                if (itemTop < window.innerHeight - itemVisible) {
+                    item.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', timelineReveal);
+        timelineReveal(); // Initial check
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.stat-number');
+        let countersAnimated = false;
+
+        const animateCounters = () => {
+            if (countersAnimated) return;
+
+            const firstCounter = counters[0];
+            const counterTop = firstCounter.getBoundingClientRect().top;
+
+            if (counterTop < window.innerHeight - 150) {
+                countersAnimated = true;
+
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                        }
+                    };
+
+                    updateCounter();
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Initial check
+
+        // Skill Progress Bars Animation
+        const skillBars = document.querySelectorAll('.skill-progress');
+        let skillsAnimated = false;
+
+        const animateSkills = () => {
+            if (skillsAnimated) return;
+
+            const skillsSection = document.getElementById('skills');
+            const sectionTop = skillsSection.getBoundingClientRect().top;
+
+            if (sectionTop < window.innerHeight - 200) {
+                skillsAnimated = true;
+
+                skillBars.forEach(bar => {
+                    const progress = bar.getAttribute('data-progress');
+                    setTimeout(() => {
+                        bar.style.width = progress + '%';
+                    }, 100);
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateSkills);
+        animateSkills(); // Initial check
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+
+            // Create mailto link
+            const mailtoLink = `mailto:francisgichere@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Reset form
+            contactForm.reset();
+
+            // Show confirmation
+            alert('Thank you! Your email client will open with the message. Please click send to complete.');
+        });
     </script>
-  </body>
+</body>
 </html>
