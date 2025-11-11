@@ -6,28 +6,37 @@
     <title>Francis Gichere - Senior Data Scientist</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
+            --primary-gold: #F59E0B;
+            --secondary-gold: #FBBF24;
+            --accent-teal: #14B8A6;
+            --dark-teal: #0D9488;
+            --deep-blue: #0F172A;
+            --slate-blue: #1E293B;
             --bg-primary: #ffffff;
-            --bg-secondary: #f3f4f6;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border-color: #e5e7eb;
+            --bg-secondary: #F8FAFC;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --border-color: #E2E8F0;
+            --gold-gradient: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+            --teal-gradient: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+            --data-gradient: linear-gradient(135deg, #F59E0B 0%, #14B8A6 50%, #0D9488 100%);
         }
 
         [data-theme="dark"] {
-            --primary-color: #3b82f6;
-            --secondary-color: #60a5fa;
-            --accent-color: #2563eb;
-            --bg-primary: #111827;
-            --bg-secondary: #1f2937;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --border-color: #374151;
+            --primary-gold: #FBBF24;
+            --secondary-gold: #FCD34D;
+            --accent-teal: #2DD4BF;
+            --dark-teal: #14B8A6;
+            --deep-blue: #ffffff;
+            --slate-blue: #F1F5F9;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --border-color: #334155;
         }
 
         * {
@@ -37,11 +46,33 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Data Grid Background */
+        .data-grid-bg {
+            background-image:
+                linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: relative;
+        }
+
+        .data-grid-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-primary) 100%);
+            pointer-events: none;
         }
 
         /* Navigation */
@@ -49,15 +80,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--bg-primary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        nav.scrolled {
-            background: var(--bg-primary);
-            backdrop-filter: blur(10px);
+        [data-theme="dark"] nav {
+            background: rgba(15, 23, 42, 0.9);
         }
 
         .nav-container {
@@ -72,7 +103,11 @@
         .nav-logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -85,8 +120,9 @@
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .nav-links a::after {
@@ -96,7 +132,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-color);
+            background: var(--gold-gradient);
             transition: width 0.3s ease;
         }
 
@@ -107,7 +143,7 @@
         .theme-toggle {
             cursor: pointer;
             font-size: 1.5rem;
-            color: var(--text-primary);
+            color: var(--primary-gold);
             transition: transform 0.3s ease;
         }
 
@@ -119,33 +155,55 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--text-primary);
+            color: var(--primary-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section - Data Analytics Inspired */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--deep-blue);
             position: relative;
             overflow: hidden;
             padding-top: 80px;
         }
 
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+
+        /* Animated Data Dots Background */
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: slide 30s linear infinite;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(245, 158, 11, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: dataFlow 20s linear infinite;
         }
 
-        @keyframes slide {
+        @keyframes dataFlow {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+
+        /* Animated Grid Lines */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: gridMove 15s linear infinite;
+        }
+
+        @keyframes gridMove {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(-50%, -50%); }
+            100% { transform: translate(100px, 100px); }
         }
 
         .hero-content {
@@ -161,23 +219,29 @@
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FBBF24 0%, #14B8A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .hero-text .tagline {
             font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--accent-teal);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease 0.2s backwards;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
         }
 
         .hero-text p {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #94A3B8;
             line-height: 1.8;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease 0.4s backwards;
@@ -191,32 +255,51 @@
 
         .btn {
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: white;
-            color: var(--primary-color);
+            background: var(--gold-gradient);
+            color: #0F172A;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid white;
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
+            background: var(--accent-teal);
+            color: #0F172A;
         }
 
         .hero-image {
@@ -231,19 +314,41 @@
             margin: 0 auto;
         }
 
+        /* Data Visualization Ring */
         .profile-container::before {
             content: '';
             position: absolute;
             inset: -20px;
-            background: linear-gradient(45deg, #fff, transparent);
+            background: conic-gradient(
+                from 0deg,
+                var(--primary-gold),
+                var(--accent-teal),
+                var(--dark-teal),
+                var(--primary-gold)
+            );
             border-radius: 50%;
-            animation: rotate 8s linear infinite;
-            opacity: 0.5;
+            animation: dataRotate 10s linear infinite;
+            opacity: 0.6;
         }
 
-        @keyframes rotate {
+        @keyframes dataRotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Inner pulsing ring - like data updating */
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: radial-gradient(circle, transparent 60%, var(--accent-teal) 60%, var(--accent-teal) 65%, transparent 65%);
+            border-radius: 50%;
+            animation: dataPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dataPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
 
         .profile-img {
@@ -251,10 +356,10 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
+            border: 5px solid var(--bg-primary);
             position: relative;
             z-index: 1;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .social-links {
@@ -266,23 +371,25 @@
         .social-links a {
             width: 45px;
             height: 45px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--primary-gold);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--primary-gold);
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: white;
-            color: var(--primary-color);
+            background: var(--gold-gradient);
+            color: #0F172A;
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
         }
 
-        /* Animated Stats */
+        /* Animated Stats - Chart Inspired */
         .stats-section {
             background: var(--bg-secondary);
             padding: 4rem 2rem;
@@ -302,21 +409,46 @@
         .stat-card {
             background: var(--bg-primary);
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Bar chart-like accent */
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--gold-gradient);
+            transition: height 0.6s ease;
+            opacity: 0.1;
+        }
+
+        .stat-card:hover::before {
+            height: 100%;
         }
 
         .stat-card:hover {
             transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
         }
 
         .stat-number {
             font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .stat-label {
@@ -343,6 +475,7 @@
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .section-title::after {
@@ -351,9 +484,9 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 80px;
             height: 4px;
-            background: var(--primary-color);
+            background: var(--gold-gradient);
             border-radius: 2px;
         }
 
@@ -363,7 +496,7 @@
             margin-top: 1.5rem;
         }
 
-        /* Impact Cards */
+        /* Impact Cards - Data Card Style */
         .impact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -373,10 +506,9 @@
         .impact-card {
             background: var(--bg-primary);
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
             transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
         }
@@ -388,13 +520,14 @@
             left: 0;
             width: 4px;
             height: 0;
-            background: var(--primary-color);
+            background: var(--teal-gradient);
             transition: height 0.3s ease;
         }
 
         .impact-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-teal);
+            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.15);
         }
 
         .impact-card:hover::before {
@@ -403,7 +536,10 @@
 
         .impact-icon {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
         }
 
@@ -411,6 +547,7 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .impact-card p {
@@ -418,7 +555,7 @@
             line-height: 1.8;
         }
 
-        /* Skills Section */
+        /* Skills Section - Progress Bar Like Charts */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -428,18 +565,27 @@
         .skill-category {
             background: var(--bg-primary);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
         }
 
         .skill-category h3 {
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            background: var(--data-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .skill-item {
@@ -451,24 +597,54 @@
             justify-content: space-between;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .skill-name .percentage {
+            color: var(--primary-gold);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
         }
 
         .skill-bar {
-            height: 8px;
+            height: 10px;
             background: var(--bg-secondary);
             border-radius: 10px;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated data-like stripes */
+        .skill-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: stripeMove 1s linear infinite;
+        }
+
+        @keyframes stripeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            background: var(--gold-gradient);
             border-radius: 10px;
-            transition: width 1s ease;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             width: 0;
+            position: relative;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
         }
 
-        /* Timeline */
+        /* Timeline - Flowchart Style */
         .timeline {
             position: relative;
             padding: 2rem 0;
@@ -479,9 +655,9 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 2px;
+            width: 3px;
             height: 100%;
-            background: var(--border-color);
+            background: linear-gradient(to bottom, var(--primary-gold), var(--accent-teal));
         }
 
         .timeline-item {
@@ -514,30 +690,54 @@
         .timeline-content {
             background: var(--bg-primary);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--primary-gold);
+        }
+
+        .timeline-item .timeline-content:first-child::before {
+            right: -22px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:first-child::before {
+            left: -22px;
+            right: auto;
         }
 
         .timeline-content:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+            transform: scale(1.02);
         }
 
         .timeline-content h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .timeline-content .date {
-            color: var(--text-secondary);
+            color: var(--accent-teal);
             font-size: 0.9rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 500;
         }
 
         .timeline-marker {
@@ -548,14 +748,20 @@
         }
 
         .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background: var(--primary-color);
+            width: 24px;
+            height: 24px;
+            background: var(--gold-gradient);
             border-radius: 50%;
             border: 4px solid var(--bg-primary);
-            box-shadow: 0 0 0 4px var(--border-color);
+            box-shadow: 0 0 0 4px var(--border-color), 0 0 20px rgba(245, 158, 11, 0.5);
             position: relative;
             z-index: 1;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         /* Contact Form */
@@ -585,6 +791,7 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .form-group input,
@@ -592,18 +799,18 @@
             width: 100%;
             padding: 1rem;
             border: 2px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
             background: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
         }
 
         .form-group textarea {
@@ -614,20 +821,21 @@
         .submit-btn {
             width: 100%;
             padding: 1.2rem;
-            background: var(--primary-color);
-            color: white;
+            background: var(--gold-gradient);
+            color: #0F172A;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
         }
 
         .submit-btn:hover {
-            background: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
         }
 
         /* Footer */
@@ -714,6 +922,10 @@
                 display: none;
             }
 
+            .timeline-content::before {
+                display: none;
+            }
+
             .section-title {
                 font-size: 2rem;
             }
@@ -727,10 +939,11 @@
             width: 70%;
             height: calc(100vh - 70px);
             background: var(--bg-primary);
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             transition: right 0.3s ease;
             z-index: 999;
+            border-left: 2px solid var(--border-color);
         }
 
         .mobile-menu.active {
@@ -750,6 +963,7 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
     </style>
 </head>
@@ -824,7 +1038,7 @@
     </section>
 
     <!-- Animated Stats -->
-    <div class="stats-section">
+    <div class="stats-section data-grid-bg">
         <div class="stats-container">
             <div class="stat-card reveal">
                 <div class="stat-number" data-target="6">0</div>
@@ -861,7 +1075,7 @@
     </section>
 
     <!-- Impact Highlights -->
-    <section id="impact" style="background: var(--bg-secondary);">
+    <section id="impact" style="background: var(--bg-secondary);" class="data-grid-bg">
         <div class="section-header reveal">
             <h2 class="section-title">Impact Highlights</h2>
             <p class="section-subtitle">Delivering measurable results through data science and AI</p>
@@ -900,90 +1114,90 @@
             <div class="skill-category reveal">
                 <h3><i class="fas fa-code"></i> Programming & Tools</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Python</span><span>95%</span></div>
+                    <div class="skill-name"><span>Python</span><span class="percentage">95%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>SQL</span><span>90%</span></div>
+                    <div class="skill-name"><span>SQL</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>R</span><span>80%</span></div>
+                    <div class="skill-name"><span>R</span><span class="percentage">80%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
                 </div>
             </div>
             <div class="skill-category reveal">
                 <h3><i class="fas fa-brain"></i> Machine Learning</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Classification & Regression</span><span>95%</span></div>
+                    <div class="skill-name"><span>Classification & Regression</span><span class="percentage">95%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Anomaly Detection</span><span>90%</span></div>
+                    <div class="skill-name"><span>Anomaly Detection</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>NLP & Computer Vision</span><span>85%</span></div>
+                    <div class="skill-name"><span>NLP & Computer Vision</span><span class="percentage">85%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
                 </div>
             </div>
             <div class="skill-category reveal">
                 <h3><i class="fas fa-database"></i> Data Engineering</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>AWS (Redshift, S3, Glue)</span><span>85%</span></div>
+                    <div class="skill-name"><span>AWS (Redshift, S3, Glue)</span><span class="percentage">85%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>ETL Pipelines</span><span>90%</span></div>
+                    <div class="skill-name"><span>ETL Pipelines</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>dbt</span><span>80%</span></div>
+                    <div class="skill-name"><span>dbt</span><span class="percentage">80%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
                 </div>
             </div>
             <div class="skill-category reveal">
                 <h3><i class="fas fa-chart-bar"></i> BI & Visualization</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Power BI</span><span>90%</span></div>
+                    <div class="skill-name"><span>Power BI</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Tableau</span><span>85%</span></div>
+                    <div class="skill-name"><span>Tableau</span><span class="percentage">85%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Metabase & Superset</span><span>88%</span></div>
+                    <div class="skill-name"><span>Metabase & Superset</span><span class="percentage">88%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
                 </div>
             </div>
             <div class="skill-category reveal">
                 <h3><i class="fas fa-robot"></i> AI & Generative AI</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>LangChain & RAG</span><span>85%</span></div>
+                    <div class="skill-name"><span>LangChain & RAG</span><span class="percentage">85%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Text-to-SQL</span><span>90%</span></div>
+                    <div class="skill-name"><span>Text-to-SQL</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Topic Modeling</span><span>80%</span></div>
+                    <div class="skill-name"><span>Topic Modeling</span><span class="percentage">80%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
                 </div>
             </div>
             <div class="skill-category reveal">
                 <h3><i class="fas fa-users"></i> Leadership & Strategy</h3>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Team Leadership</span><span>90%</span></div>
+                    <div class="skill-name"><span>Team Leadership</span><span class="percentage">90%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Stakeholder Management</span><span>92%</span></div>
+                    <div class="skill-name"><span>Stakeholder Management</span><span class="percentage">92%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name"><span>Agile & OKR Setting</span><span>85%</span></div>
+                    <div class="skill-name"><span>Agile & OKR Setting</span><span class="percentage">85%</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
                 </div>
             </div>
@@ -991,7 +1205,7 @@
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" style="background: var(--bg-secondary);">
+    <section id="experience" style="background: var(--bg-secondary);" class="data-grid-bg">
         <div class="section-header reveal">
             <h2 class="section-title">Professional Experience</h2>
             <p class="section-subtitle">A journey of impact and innovation</p>
@@ -1085,7 +1299,7 @@
     </section>
 
     <!-- Education -->
-    <section id="education" style="background: var(--bg-secondary);">
+    <section id="education" style="background: var(--bg-secondary);" class="data-grid-bg">
         <div class="section-header reveal">
             <h2 class="section-title">Education</h2>
         </div>
@@ -1094,14 +1308,14 @@
                 <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h3>MSc in Data Science (Ongoing)</h3>
                 <p><strong>University of East London</strong></p>
-                <p class="date"><i class="fas fa-calendar"></i> May 2023 - Present</p>
+                <p class="date" style="color: var(--accent-teal); margin-top: 0.5rem;"><i class="fas fa-calendar"></i> May 2023 - Present</p>
                 <p>Specializing in Predictive Analytics, Machine Learning, and Spatial Data Analysis.</p>
             </div>
             <div class="impact-card reveal">
                 <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h3>BSc in Statistics & Computer Science</h3>
                 <p><strong>Technical University of Mombasa</strong></p>
-                <p class="date"><i class="fas fa-calendar"></i> 2013 - 2018</p>
+                <p class="date" style="color: var(--accent-teal); margin-top: 0.5rem;"><i class="fas fa-calendar"></i> 2013 - 2018</p>
                 <p>Second Class Honors; Published research on education and performance metrics.</p>
             </div>
         </div>
@@ -1138,7 +1352,7 @@
                 </button>
             </form>
             <div style="text-align: center; margin-top: 2rem;">
-                <p style="color: var(--text-secondary);">Or email directly: <a href="mailto:francisgichere@gmail.com" style="color: var(--primary-color); font-weight: 600;">francisgichere@gmail.com</a></p>
+                <p style="color: var(--text-secondary);">Or email directly: <a href="mailto:francisgichere@gmail.com" style="color: var(--primary-gold); font-weight: 600;">francisgichere@gmail.com</a></p>
             </div>
         </div>
     </section>
@@ -1167,7 +1381,6 @@
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
 
-        // Check for saved theme preference or default to light mode
         const currentTheme = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-theme', currentTheme);
         updateThemeIcon(currentTheme);
@@ -1183,7 +1396,7 @@
             themeToggle.className = theme === 'light' ? 'fas fa-moon theme-toggle' : 'fas fa-sun theme-toggle';
         }
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -1213,16 +1426,6 @@
             });
         });
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
         // Reveal Animations
         const revealElements = document.querySelectorAll('.reveal');
 
@@ -1238,7 +1441,7 @@
         };
 
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
+        revealOnScroll();
 
         // Timeline Animation
         const timelineItems = document.querySelectorAll('.timeline-item');
@@ -1255,7 +1458,7 @@
         };
 
         window.addEventListener('scroll', timelineReveal);
-        timelineReveal(); // Initial check
+        timelineReveal();
 
         // Animated Counters
         const counters = document.querySelectorAll('.stat-number');
@@ -1279,10 +1482,10 @@
                     const updateCounter = () => {
                         current += increment;
                         if (current < target) {
-                            counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+                            counter.textContent = Math.floor(current);
                             requestAnimationFrame(updateCounter);
                         } else {
-                            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                            counter.textContent = target;
                         }
                     };
 
@@ -1292,9 +1495,9 @@
         };
 
         window.addEventListener('scroll', animateCounters);
-        animateCounters(); // Initial check
+        animateCounters();
 
-        // Skill Progress Bars Animation
+        // Skill Progress Bars
         const skillBars = document.querySelectorAll('.skill-progress');
         let skillsAnimated = false;
 
@@ -1317,9 +1520,9 @@
         };
 
         window.addEventListener('scroll', animateSkills);
-        animateSkills(); // Initial check
+        animateSkills();
 
-        // Contact Form Handling
+        // Contact Form
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1330,16 +1533,11 @@
             const subject = formData.get('subject');
             const message = formData.get('message');
 
-            // Create mailto link
             const mailtoLink = `mailto:francisgichere@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
 
-            // Open email client
             window.location.href = mailtoLink;
-
-            // Reset form
             contactForm.reset();
 
-            // Show confirmation
             alert('Thank you! Your email client will open with the message. Please click send to complete.');
         });
     </script>
