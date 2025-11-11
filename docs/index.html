@@ -582,6 +582,45 @@
             line-height: 1.8;
         }
 
+        /* Tech Badges */
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--glow-cyan);
+        }
+
+        .project-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -1085,6 +1124,8 @@
                 <li><a href="#home">home</a></li>
                 <li><a href="#about">about</a></li>
                 <li><a href="#impact">impact</a></li>
+                <li><a href="#publications">publications</a></li>
+                <li><a href="#projects">projects</a></li>
                 <li><a href="#skills">skills</a></li>
                 <li><a href="#experience">experience</a></li>
                 <li><a href="#certifications">certifications</a></li>
@@ -1101,6 +1142,8 @@
             <li><a href="#home" class="mobile-link">home</a></li>
             <li><a href="#about" class="mobile-link">about</a></li>
             <li><a href="#impact" class="mobile-link">impact</a></li>
+            <li><a href="#publications" class="mobile-link">publications</a></li>
+            <li><a href="#projects" class="mobile-link">projects</a></li>
             <li><a href="#skills" class="mobile-link">skills</a></li>
             <li><a href="#experience" class="mobile-link">experience</a></li>
             <li><a href="#certifications" class="mobile-link">certifications</a></li>
@@ -1278,6 +1321,204 @@
                     <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Financial Crime Detection</h3>
                     <p>Designed anomaly detection solutions using Isolation Forest, ECOD, and LOF for banking datasets, improving AUC-ROC scores by 15% with enhanced model interpretability via SHAP.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2 class="section-title"><span class="highlight">thought.leadership</span></h2>
+                <p class="section-subtitle">Published articles on data science, NLP, and analytics</p>
+            </div>
+            <div class="card-grid">
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
+                    <h3>A Lightweight Machine Learning Approach to Maternal Risk Stratification</h3>
+                    <div style="color: var(--secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem;">
+                        <i class="fas fa-clock"></i> 7 min read
+                    </div>
+                    <p style="margin-bottom: 1rem;">Demonstrating how logistic regression and decision trees can enhance maternal healthcare triage efficiency in resource-constrained settings, reducing complications through data science-driven risk prioritization.</p>
+                    <a href="https://medium.com/@francisgichere/saving-mothers-with-data-science-a-lightweight-machine-learning-approach-to-maternal-risk-013bdf47e6c9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-book-open"></i>
+                        <span>Read Article</span>
+                    </a>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <h3>NLP-Powered Insights: Analyzing Customer Sentiment Trends in Kenyan Banks</h3>
+                    <div style="color: var(--secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem;">
+                        <i class="fas fa-clock"></i> 9 min read
+                    </div>
+                    <p style="margin-bottom: 1rem;">Deep dive into sentiment analysis of Kenyan banks' app reviews from 2022-2023, uncovering customer experience trends and service quality patterns using natural language processing techniques.</p>
+                    <a href="https://francisgichere.medium.com/nlp-powered-insights-analyzing-customer-sentiment-trends-in-kenyan-banks-app-reviews-from-2022-to-f1f0f53ffc4f" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-book-open"></i>
+                        <span>Read Article</span>
+                    </a>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-search"></i></div>
+                    <h3>Sentiment Analysis of App Reviews: A Comparison of BERT, spaCy, TextBlob, and NLTK</h3>
+                    <div style="color: var(--secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem;">
+                        <i class="fas fa-clock"></i> 3 min read
+                    </div>
+                    <p style="margin-bottom: 1rem;">Technical comparison of leading NLP tools and frameworks for sentiment analysis, providing practical insights on accuracy, performance, and use cases for each approach.</p>
+                    <a href="https://becominghuman.ai/sentiment-analysis-of-app-reviews-a-comparison-of-bert-spacy-textblob-and-nltk-9016054d54dc" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-book-open"></i>
+                        <span>Read Article</span>
+                    </a>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Demystifying Hypothesis Testing</h3>
+                    <div style="color: var(--secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem;">
+                        <i class="fas fa-clock"></i> 4 min read
+                    </div>
+                    <p style="margin-bottom: 1rem;">Breaking down hypothesis testing fundamentals, making statistical inference accessible for data science practitioners through clear explanations and practical examples.</p>
+                    <a href="https://francisgichere.medium.com/demystifying-hypothesis-testing-e1f6537731ac" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-book-open"></i>
+                        <span>Read Article</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2 class="section-title"><span class="highlight">project.showcase</span></h2>
+                <p class="section-subtitle">Open source repositories and interactive dashboards</p>
+            </div>
+            <div class="card-grid">
+                <!-- Maternal Risk ML Project -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fab fa-github"></i> Machine Learning</div>
+                    <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Maternal Risk Stratification</h3>
+                    <p style="margin-bottom: 1rem;">Lightweight ML classifier using logistic regression and decision trees to prioritize high-risk mothers in healthcare triage, reducing maternal complications in resource-constrained settings.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Scikit-Learn</span>
+                        <span class="tech-badge">Logistic Regression</span>
+                        <span class="tech-badge">Decision Trees</span>
+                        <span class="tech-badge">Healthcare ML</span>
+                    </div>
+                    <a href="https://github.com/Gichere/A-Lightweight-Machine-Learning-Approach-to-Maternal-Risk-Stratification" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fab fa-github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+
+                <!-- Banking Sentiment Dashboard -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fas fa-chart-bar"></i> Data Visualization</div>
+                    <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Kenyan Banks NLP Insights Dashboard</h3>
+                    <p style="margin-bottom: 1rem;">Interactive Tableau dashboard analyzing sentiment trends in Kenyan banks' app reviews, providing visual insights into customer experience patterns and service quality metrics.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Tableau</span>
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">Sentiment Analysis</span>
+                        <span class="tech-badge">Banking</span>
+                    </div>
+                    <a href="https://public.tableau.com/app/profile/francis.gichere/viz/NLPInsightsExploringKenyanBanksAppReviews/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Dashboard</span>
+                    </a>
+                </div>
+
+                <!-- Marketing Mix Model -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fab fa-github"></i> Statistical Modeling</div>
+                    <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Marketing Mix Modeling (MMM)</h3>
+                    <p style="margin-bottom: 1rem;">Quantifying marketing channel impact on sales volume using multiple linear regression. Measures ROI of each marketing channel and optimizes budget allocation for maximum revenue.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">MLR</span>
+                        <span class="tech-badge">Marketing Analytics</span>
+                        <span class="tech-badge">ROI Optimization</span>
+                    </div>
+                    <a href="https://github.com/Gichere/marketing-mixed-models-using-MLR" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fab fa-github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+
+                <!-- Sensor Classification -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fab fa-github"></i> IoT & ML</div>
+                    <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Cooking Session Detection (IoT)</h3>
+                    <p style="margin-bottom: 1rem;">Supervised ML models detecting cooking sessions from temperature sensor data. Compares global vs sensor-specific models across Random Forest, Gradient Boosting, SVM, and MLP for production deployment.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">IoT Sensors</span>
+                        <span class="tech-badge">Random Forest</span>
+                        <span class="tech-badge">Gradient Boosting</span>
+                        <span class="tech-badge">Feature Engineering</span>
+                    </div>
+                    <a href="https://github.com/Gichere/Sensor-Classification---Supervised" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fab fa-github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+
+                <!-- Banking Sentiment Dashboard 2 -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fas fa-chart-bar"></i> Data Visualization</div>
+                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Banking App Sentiment Analysis</h3>
+                    <p style="margin-bottom: 1rem;">Advanced Tableau dashboard exploring sentiment trends across Kenyan banking apps, visualizing customer satisfaction patterns, pain points, and feature requests from app store reviews.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Tableau</span>
+                        <span class="tech-badge">Text Analytics</span>
+                        <span class="tech-badge">Customer Insights</span>
+                    </div>
+                    <a href="https://public.tableau.com/app/profile/francis.gichere/viz/KenyanBanksAppSentimentAnalysisv4/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Dashboard</span>
+                    </a>
+                </div>
+
+                <!-- Kipchoge Visualization -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fab fa-github"></i> Data Storytelling</div>
+                    <div class="card-icon"><i class="fas fa-running"></i></div>
+                    <h3>Visualizing Kipchoge's World Record</h3>
+                    <p style="margin-bottom: 1rem;">Data visualization project analyzing Eliud Kipchoge's marathon performance data, exploring pace, splits, and historical context through creative visual storytelling and analytics.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Matplotlib</span>
+                        <span class="tech-badge">Data Viz</span>
+                        <span class="tech-badge">Sports Analytics</span>
+                    </div>
+                    <a href="https://github.com/Gichere/visiualizing-kipchoge-new-record" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fab fa-github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+
+                <!-- NovyPro Dashboard -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fas fa-chart-bar"></i> Interactive Dashboard</div>
+                    <div class="card-icon"><i class="fas fa-chart-area"></i></div>
+                    <h3>Business Analytics Dashboard</h3>
+                    <p style="margin-bottom: 1rem;">Interactive business intelligence dashboard showcasing comprehensive analytics capabilities, KPI tracking, and data visualization best practices using modern BI tools.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Power BI</span>
+                        <span class="tech-badge">DAX</span>
+                        <span class="tech-badge">Business Analytics</span>
+                        <span class="tech-badge">KPIs</span>
+                    </div>
+                    <a href="https://project.novypro.com/1kEQmu" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Dashboard</span>
+                    </a>
                 </div>
             </div>
         </div>
