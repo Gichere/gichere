@@ -1233,22 +1233,42 @@
             </div>
             <div class="stat-card reveal">
                 <div class="stat-header">
-                    <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-number" data-target="70">0</div>
+                    <div class="stat-icon"><i class="fas fa-users-cog"></i></div>
                 </div>
-                <div class="stat-label">K+ Grants Secured</div>
+                <div class="stat-label">% Reduction in Ad-hoc Requests</div>
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" data-width="70"></div>
+                </div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-header">
+                    <div class="stat-number" data-target="8">0</div>
+                    <div class="stat-icon"><i class="fas fa-robot"></i></div>
+                </div>
+                <div class="stat-label">ML Models in Production</div>
                 <div class="stat-bar">
                     <div class="stat-bar-fill" data-width="85"></div>
                 </div>
             </div>
             <div class="stat-card reveal">
                 <div class="stat-header">
-                    <div class="stat-number" data-target="9">0</div>
+                    <div class="stat-number" data-target="2">0</div>
                     <div class="stat-icon"><i class="fas fa-database"></i></div>
                 </div>
-                <div class="stat-label">Data Sources Integrated</div>
+                <div class="stat-label">Enterprise Data Warehouses Delivered</div>
                 <div class="stat-bar">
-                    <div class="stat-bar-fill" data-width="80"></div>
+                    <div class="stat-bar-fill" data-width="100"></div>
+                </div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-header">
+                    <div class="stat-number" data-target="2">0</div>
+                    <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                </div>
+                <div class="stat-label">GenAI Solutions Delivered</div>
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" data-width="100"></div>
                 </div>
             </div>
         </div>
@@ -2014,7 +2034,13 @@
                             counter.textContent = Math.floor(current);
                             requestAnimationFrame(updateCounter);
                         } else {
-                            counter.textContent = target;
+                            // Add "+" suffix for years of experience and ML models
+                            const label = counter.parentElement.parentElement.querySelector('.stat-label').textContent;
+                            if (label.includes('Years of Experience') || label.includes('ML Models')) {
+                                counter.textContent = target + '+';
+                            } else {
+                                counter.textContent = target;
+                            }
                         }
                     };
 
