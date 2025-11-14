@@ -1198,7 +1198,7 @@
                         <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
                             <i class="fab fa-medium-m"></i>
                         </a>
-                        <a href="mailto:francisgichere@gmail.com" title="Email">
+                        <a href="#contact" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                         <a href="https://github.com/gichere" target="_blank" title="GitHub">
@@ -1843,9 +1843,8 @@
                 </button>
             </form>
             <div style="text-align: center; margin-top: 2rem;">
-                <p style="color: var(--text-secondary);">
-                    <span class="mono">$ echo </span>
-                    <a href="mailto:francisgichere@gmail.com" style="color: var(--primary); font-family: 'JetBrains Mono', monospace;">francisgichere@gmail.com</a>
+                <p style="color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;">
+                    Prefer direct email? <span id="emailReveal" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Click to reveal</span>
                 </p>
             </div>
         </div>
@@ -1860,7 +1859,7 @@
             <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
                 <i class="fab fa-medium-m"></i>
             </a>
-            <a href="mailto:francisgichere@gmail.com" title="Email">
+            <a href="#contact" title="Email">
                 <i class="fas fa-envelope"></i>
             </a>
             <a href="https://github.com/gichere" target="_blank" title="GitHub">
@@ -2098,8 +2097,15 @@
         window.addEventListener('scroll', animateSkills);
         animateSkills();
 
-        // Contact Form
+        // Contact Form with Email Obfuscation
         const contactForm = document.getElementById('contactForm');
+
+        // Obfuscated email - harder for bots to scrape
+        function getEmail() {
+            const parts = ['francis', 'gichere', '@', 'gmail', '.', 'com'];
+            return parts[0] + parts[1] + parts[2] + parts[3] + parts[4] + parts[5];
+        }
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -2109,13 +2115,22 @@
             const subject = formData.get('subject');
             const message = formData.get('message');
 
-            const mailtoLink = `mailto:francisgichere@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            const mailtoLink = `mailto:${getEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
 
             window.location.href = mailtoLink;
             contactForm.reset();
 
             alert('Thank you! Your email client will open with the message. Please click send to complete.');
         });
+
+        // Email reveal functionality
+        const emailReveal = document.getElementById('emailReveal');
+        if (emailReveal) {
+            emailReveal.addEventListener('click', () => {
+                const email = getEmail();
+                emailReveal.innerHTML = `<a href="mailto:${email}" style="color: var(--primary);">${email}</a>`;
+            });
+        }
 
         // Typewriter Effect
         const typewriterText = "Senior Data Scientist | ML Engineer";
