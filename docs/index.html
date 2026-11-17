@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francis Gichere - Senior Data Scientist</title>
+    <title>Francis Gichere | Data &amp; Analytics Manager</title>
+    <meta name="description" content="Francis Gichere, Data &amp; Analytics Manager at CIC Insurance Group. Data strategy, machine learning, data warehousing and BI across insurance, banking and asset management.">
+    <meta property="og:title" content="Francis Gichere | Data &amp; Analytics Manager">
+    <meta property="og:description" content="Data strategy, machine learning, data warehousing and BI across insurance, banking and asset management.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0A0E27">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -751,11 +758,11 @@
 
         .timeline-item.left {
             flex-direction: row;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         .timeline-item.right {
-            flex-direction: row-reverse;
+            flex-direction: row;
             justify-content: flex-end;
         }
 
@@ -816,8 +823,9 @@
 
         .timeline-marker {
             position: absolute;
+            top: 21px;
             left: 50%;
-            transform: translateX(-50%);
+            margin-left: -10px;
             width: 20px;
             height: 20px;
             background: var(--primary);
@@ -1045,7 +1053,6 @@
             }
 
             * {
-                animation-duration: 0.3s !important;
                 transition-duration: 0.3s !important;
             }
         }
@@ -1118,6 +1125,125 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.1rem;
         }
+
+        /* Added: nav fit. Hover brackets no longer take up space, gap scales with width,
+           and the hamburger takes over below 1200px so the ten links never overflow. */
+        .nav-links { gap: clamp(1.3rem, 2vw, 2.5rem); }
+        .nav-links a::before,
+        .nav-links a::after { position: absolute; top: 0; }
+        .nav-links a::before { right: 100%; }
+        .nav-links a::after { left: 100%; }
+
+        @media (max-width: 1300px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* Added: button reset for mobile menu, active nav link, badges, status text */
+        button.mobile-menu-btn {
+            background: none;
+            border: none;
+            padding: 0.25rem;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .current-badge {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+            padding: 0.15rem 0.6rem;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .form-status {
+            min-height: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .timeline-item {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Added: leadership list, project notes, centred last row for project cards */
+        .leader-list { list-style: none; }
+        .leader-list li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .leader-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .project-note {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .card-grid.centered {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card-grid.centered > .data-card { flex: 0 0 calc((100% - 4rem) / 3); }
+        @media (max-width: 1099px) {
+            .card-grid.centered > .data-card { flex-basis: calc((100% - 2rem) / 2); }
+        }
+        @media (max-width: 768px) {
+            .card-grid.centered { display: grid; }
+            .card-grid.centered > .data-card { flex-basis: auto; }
+        }
+
+        /* Added: tighter vertical spacing between sections */
+        .hero { min-height: 88vh; }
+        section { padding: 3rem 2rem; }
+        .stats-section { padding: 2rem 2rem 3rem 2rem; }
+        .contact-section { padding: 3rem 2rem; }
+        .section-header { margin-bottom: 2.5rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        @media (max-width: 768px) {
+            section { padding: 2.5rem 1rem; }
+            .stats-section { padding: 2rem 1rem; }
+            .contact-section { padding: 2.5rem 1rem; }
+            .section-header { margin-bottom: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -1146,7 +1272,7 @@
                 <li><a href="#education">education</a></li>
                 <li><a href="#contact">contact</a></li>
             </ul>
-            <i class="fas fa-bars mobile-menu-btn" id="mobileMenuBtn"></i>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -1177,9 +1303,9 @@
                 </div>
                 <div class="terminal-content">
                     <h1>Francis Gichere</h1>
-                    <div class="typewriter" id="typewriter">Senior Data Scientist | ML Engineer</div>
+                    <div class="typewriter" id="typewriter">Data &amp; Analytics Manager | Data &amp; AI Strategy</div>
                     <p>
-                        Building intelligent systems that transform data into strategic value. 6+ years architecting AI/ML solutions across insurance, manufacturing, and financial services. Specializing in self-service analytics, anomaly detection, and production ML pipelines.
+                        Leading data and analytics at CIC Insurance Group. 7+ years building AI and ML solutions across insurance, manufacturing, and financial services, from self-service analytics and anomaly detection to production ML pipelines and enterprise data warehouses.
                     </p>
                     <div class="btn-group">
                         <a href="#contact" class="btn btn-primary">
@@ -1192,16 +1318,16 @@
                         </a>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/gichere/" target="_blank" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/gichere/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
+                        <a href="https://medium.com/@francisgichere" target="_blank" rel="noopener noreferrer" title="Medium" aria-label="Medium">
                             <i class="fab fa-medium-m"></i>
                         </a>
-                        <a href="mailto:francisgichere@gmail.com" title="Email">
+                        <a href="mailto:francisgichere@gmail.com" title="Email" aria-label="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="https://github.com/gichere" target="_blank" title="GitHub">
+                        <a href="https://github.com/gichere" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -1216,7 +1342,7 @@
                 <div class="data-node"></div>
                 <div class="data-node"></div>
                 <div class="profile-container">
-                    <img src="profile.jpg" alt="Francis Gichere" class="profile-img">
+                    <img src="profile.jpg" alt="Francis Gichere" class="profile-img" onerror="this.style.display='none'">
                 </div>
             </div>
         </div>
@@ -1227,7 +1353,7 @@
         <div class="stats-container">
             <div class="stat-card reveal">
                 <div class="stat-header">
-                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-number" data-target="7">0</div>
                     <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
                 </div>
                 <div class="stat-label">Years of Experience</div>
@@ -1294,7 +1420,7 @@
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">system.overview</span></h2>
                 <p class="section-subtitle">
-                    Transforming complex data into actionable intelligence
+                    Turning complex data into decisions
                 </p>
             </div>
             <div class="terminal reveal" style="max-width: 900px; margin: 0 auto;">
@@ -1308,10 +1434,10 @@
                         <span class="mono" style="color: var(--primary);">$ cat about.txt</span>
                     </p>
                     <p>
-                        Senior Data Scientist with 6+ years delivering strategic data initiatives across insurance, asset management, manufacturing, FMCG, and climate. Experienced in shaping enterprise data strategies, designing predictive and personalization engines, and scaling BI adoption to unlock business value.
+                        Data &amp; Analytics Manager at CIC Insurance Group with 7+ years delivering data initiatives across insurance, asset management, manufacturing, FMCG, and climate. Leads the Data &amp; Analytics function within Digital &amp; Innovation. Experienced in shaping enterprise data strategy, designing predictive and personalization models, and growing BI adoption so the business uses data in its daily decisions.
                     </p>
                     <p style="margin-top: 1rem;">
-                        Skilled at working with executives to define long-term data roadmaps, embed governance, and align analytics outcomes with revenue, customer satisfaction, risk, and efficiency objectives. Currently focused on insurance, banking, and asset management, with a strong record of moving from technical delivery to influencing organizational data strategy.
+                        Works with executives to set long-term data roadmaps, put governance in place, and tie analytics to revenue, customer satisfaction, risk, and efficiency goals. Focused on insurance, banking, and asset management, with a record of moving from technical delivery to shaping organizational data strategy.
                     </p>
                 </div>
             </div>
@@ -1323,9 +1449,39 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">impact.metrics</span></h2>
-                <p class="section-subtitle">Measurable results through AI/ML innovation</p>
+                <p class="section-subtitle">Results across data strategy, platforms, and machine learning</p>
             </div>
             <div class="card-grid">
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h3>Group Data Warehouse</h3>
+                    <p>Designed the on-premise enterprise data warehouse for CIC Group's subsidiaries using a medallion architecture, giving each business one governed source for reporting.</p>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Data Governance</h3>
+                    <p>Rolling out OpenMetadata as the data catalog on the warehouse, with lineage and a business glossary so teams can find, trust, and trace the data they use.</p>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Executive Reporting</h3>
+                    <p>Built the Power BI executive dashboard for the Group MD and CEO, covering every CIC subsidiary and region in one view.</p>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Business Reporting</h3>
+                    <p>Delivered Power BI reporting for Loan Guard, CICAM client dormancy campaigns, and reinsurance operations, fed by pipelines from the warehouse.</p>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>AI Under One Roof</h3>
+                    <p>Proposed bringing AI work across CIC under Data &amp; Analytics within Digital &amp; Innovation, giving AI projects a single home.</p>
+                </div>
+                <div class="data-card reveal">
+                    <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>In-House BI Takeover</h3>
+                    <p>Took over CICAM BI reports from an external vendor ahead of its contract end, moving reporting in-house to the Data &amp; Analytics team.</p>
+                </div>
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-sitemap"></i></div>
                     <h3>CIC Data Strategy</h3>
@@ -1334,7 +1490,7 @@
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-robot"></i></div>
                     <h3>AI Self-Service Analytics</h3>
-                    <p>Built Ecoa DataSense, an AI-driven platform with text-to-SQL generation, slashing time-to-insights by 90% and empowering senior management with real-time decision intelligence.</p>
+                    <p>Built Ecoa DataSense, an AI-driven platform with text-to-SQL generation, cutting time-to-insight by 90% and giving senior management direct, real-time access to their data.</p>
                 </div>
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-users-cog"></i></div>
@@ -1425,9 +1581,9 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">project.showcase</span></h2>
-                <p class="section-subtitle">Open source repositories and interactive dashboards</p>
+                <p class="section-subtitle">Open source work, dashboards, and internal tools</p>
             </div>
-            <div class="card-grid">
+            <div class="card-grid centered">
                 <!-- Maternal Risk ML Project -->
                 <div class="data-card reveal">
                     <div class="project-type"><i class="fab fa-github"></i> Machine Learning</div>
@@ -1447,22 +1603,28 @@
                     </a>
                 </div>
 
-                <!-- Banking Sentiment Dashboard -->
+                <!-- Banking App Sentiment (Tableau) -->
                 <div class="data-card reveal">
                     <div class="project-type"><i class="fas fa-chart-bar"></i> Data Visualization</div>
                     <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3>Kenyan Banks NLP Insights Dashboard</h3>
-                    <p style="margin-bottom: 1rem;">Interactive Tableau dashboard analyzing sentiment trends in Kenyan banks' app reviews, providing visual insights into customer experience patterns and service quality metrics.</p>
+                    <h3>Kenyan Banks App Sentiment</h3>
+                    <p style="margin-bottom: 1rem;">Two Tableau dashboards on sentiment in Kenyan banks' app reviews: trends over time, customer pain points, and feature requests.</p>
                     <div class="tech-badges">
                         <span class="tech-badge">Tableau</span>
                         <span class="tech-badge">NLP</span>
                         <span class="tech-badge">Sentiment Analysis</span>
                         <span class="tech-badge">Banking</span>
                     </div>
-                    <a href="https://public.tableau.com/app/profile/francis.gichere/viz/NLPInsightsExploringKenyanBanksAppReviews/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>View Dashboard</span>
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://public.tableau.com/app/profile/francis.gichere/viz/NLPInsightsExploringKenyanBanksAppReviews/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>NLP Insights</span>
+                        </a>
+                        <a href="https://public.tableau.com/app/profile/francis.gichere/viz/KenyanBanksAppSentimentAnalysisv4/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Sentiment</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Marketing Mix Model -->
@@ -1502,23 +1664,6 @@
                     </a>
                 </div>
 
-                <!-- Banking Sentiment Dashboard 2 -->
-                <div class="data-card reveal">
-                    <div class="project-type"><i class="fas fa-chart-bar"></i> Data Visualization</div>
-                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Banking App Sentiment Analysis</h3>
-                    <p style="margin-bottom: 1rem;">Advanced Tableau dashboard exploring sentiment trends across Kenyan banking apps, visualizing customer satisfaction patterns, pain points, and feature requests from app store reviews.</p>
-                    <div class="tech-badges">
-                        <span class="tech-badge">Tableau</span>
-                        <span class="tech-badge">Text Analytics</span>
-                        <span class="tech-badge">Customer Insights</span>
-                    </div>
-                    <a href="https://public.tableau.com/app/profile/francis.gichere/viz/KenyanBanksAppSentimentAnalysisv4/Dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>View Dashboard</span>
-                    </a>
-                </div>
-
                 <!-- Kipchoge Visualization -->
                 <div class="data-card reveal">
                     <div class="project-type"><i class="fab fa-github"></i> Data Storytelling</div>
@@ -1537,22 +1682,33 @@
                     </a>
                 </div>
 
-                <!-- NovyPro Dashboard -->
+                <!-- Investment Reporting Portal -->
                 <div class="data-card reveal">
-                    <div class="project-type"><i class="fas fa-chart-bar"></i> Interactive Dashboard</div>
-                    <div class="card-icon"><i class="fas fa-chart-area"></i></div>
-                    <h3>Business Analytics Dashboard</h3>
-                    <p style="margin-bottom: 1rem;">Interactive business intelligence dashboard showcasing comprehensive analytics capabilities, KPI tracking, and data visualization best practices using modern BI tools.</p>
+                    <div class="project-type"><i class="fas fa-file-powerpoint"></i> Reporting Automation</div>
+                    <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+                    <h3>Investment Reporting Portal</h3>
+                    <p style="margin-bottom: 1rem;">R Shiny portal on Posit Connect that generates branded client investment reports as PowerPoint files for CIC Asset Management.</p>
                     <div class="tech-badges">
-                        <span class="tech-badge">Power BI</span>
-                        <span class="tech-badge">DAX</span>
-                        <span class="tech-badge">Business Analytics</span>
-                        <span class="tech-badge">KPIs</span>
+                        <span class="tech-badge">R</span>
+                        <span class="tech-badge">Shiny</span>
+                        <span class="tech-badge">Posit Connect</span>
+                        <span class="tech-badge">Report Automation</span>
                     </div>
-                    <a href="https://project.novypro.com/1kEQmu" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>View Dashboard</span>
-                    </a>
+                    <span class="project-note">Internal project, no public link</span>
+                </div>
+
+                <!-- Anomalous Transactions -->
+                <div class="data-card reveal">
+                    <div class="project-type"><i class="fas fa-shield-alt"></i> Machine Learning</div>
+                    <div class="card-icon"><i class="fas fa-search-dollar"></i></div>
+                    <h3>Anomalous Transactions Model</h3>
+                    <p style="margin-bottom: 1rem;">Machine learning model that flags unusual transactions in CIC data so reviewers can focus on the cases most likely to need attention.</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Anomaly Detection</span>
+                        <span class="tech-badge">Financial Crime</span>
+                    </div>
+                    <span class="project-note">Internal project, no public link</span>
                 </div>
             </div>
         </div>
@@ -1563,7 +1719,7 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">tech.stack</span></h2>
-                <p class="section-subtitle">Full-stack data science & ML engineering</p>
+                <p class="section-subtitle">Data science, engineering, governance, and leadership</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card reveal">
@@ -1647,19 +1803,51 @@
                 </div>
 
                 <div class="skill-card reveal">
+                    <h3><i class="fas fa-sitemap"></i> Governance &amp; Architecture</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">OpenMetadata</span>
+                        <span class="tech-badge">Data Catalog</span>
+                        <span class="tech-badge">Data Lineage</span>
+                        <span class="tech-badge">Business Glossary</span>
+                        <span class="tech-badge">Data Quality</span>
+                        <span class="tech-badge">Medallion Architecture</span>
+                        <span class="tech-badge">Data Warehousing</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3><i class="fas fa-layer-group"></i> Platforms &amp; Reporting</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">R Shiny</span>
+                        <span class="tech-badge">Posit Connect</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Power BI (DAX)</span>
+                        <span class="tech-badge">UiPath</span>
+                        <span class="tech-badge">LLM APIs (OpenAI, Anthropic)</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3><i class="fas fa-calculator"></i> Statistics &amp; Modeling</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Survival Analysis (Weibull)</span>
+                        <span class="tech-badge">Clustering (K-Means, RFM)</span>
+                        <span class="tech-badge">Marketing Mix Modeling</span>
+                        <span class="tech-badge">Hypothesis Testing</span>
+                        <span class="tech-badge">Explainability (SHAP)</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
                     <h3><i class="fas fa-users-cog"></i> Leadership</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Team Leadership</span><span class="skill-percentage">90%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Stakeholder Management</span><span class="skill-percentage">92%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Agile & OKR Setting</span><span class="skill-percentage">85%</span></div>
-                        <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                    </div>
+                    <ul class="leader-list">
+                        <li>Leads data analysts, data scientists, data engineers, and data quality analysts</li>
+                        <li>Serves the life, general, health, and asset management businesses</li>
+                        <li>Builds and presents executive reporting for the Group MD and CEO</li>
+                        <li>Moved BI reporting in-house from an external vendor</li>
+                        <li>Evaluates vendor bids for technology tenders</li>
+                        <li>Agile delivery and OKR setting</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1670,20 +1858,30 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">career.timeline</span></h2>
-                <p class="section-subtitle">Journey of innovation and impact</p>
+                <p class="section-subtitle">Roles and results</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3>Group Senior Data Scientist</h3>
-                        <div class="date">[ Jun 2025 - Present ]</div>
+                        <h3>Data &amp; Analytics Manager <span class="current-badge">Current</span></h3>
+                        <div class="date">[ Sep 2026 - Present ]</div>
+                        <div class="company">CIC Insurance Group, Nairobi, Kenya</div>
+                        <p>Lead the Data &amp; Analytics function within Digital &amp; Innovation, managing data analysts, data scientists, data engineers, and data quality analysts. Own the group data warehouse, BI and executive reporting, data governance, and the roadmap for AI and machine learning work across CIC's life, general, health, and asset management businesses.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Senior Data Scientist</h3>
+                        <div class="date">[ Jun 2025 - Aug 2026 ]</div>
                         <div class="company">CIC Insurance Group, Nairobi, Kenya</div>
                         <p>Developed CIC's 5-year data strategy aligning unified data lakehouse, BI modernization, predictive analytics, personalization, and AI adoption with quarterly milestones. Built customer segmentation models for CIC Asset Management using behavioral clustering and withdrawal risk scoring. Created sentiment analysis pipeline for customer insights and enhanced BI environment supporting General, Life, Health, and Asset subsidiaries.</p>
                     </div>
                     <div class="timeline-marker"></div>
                 </div>
 
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="timeline-content">
                         <h3>Lead Data Scientist</h3>
                         <div class="date">[ Dec 2024 - Jun 2025 ]</div>
@@ -1693,7 +1891,7 @@
                     <div class="timeline-marker"></div>
                 </div>
 
-                <div class="timeline-item left">
+                <div class="timeline-item right">
                     <div class="timeline-content">
                         <h3>Data Scientist</h3>
                         <div class="date">[ Apr 2022 - Dec 2024 ]</div>
@@ -1703,7 +1901,7 @@
                     <div class="timeline-marker"></div>
                 </div>
 
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="timeline-content">
                         <h3>Data Science Research Fellow</h3>
                         <div class="date">[ May 2024 - Sep 2024 ]</div>
@@ -1713,17 +1911,17 @@
                     <div class="timeline-marker"></div>
                 </div>
 
-                <div class="timeline-item left">
+                <div class="timeline-item right">
                     <div class="timeline-content">
                         <h3>Data Analyst</h3>
                         <div class="date">[ Feb 2021 - Mar 2022 ]</div>
-                        <div class="company">Loki Ventures, Nairobi, Kenya</div>
+                        <div class="company">Loki Ventures (PetStore Kenya), Nairobi, Kenya</div>
                         <p>Developed customer segmentation model using K-Means and RFM analysis, increasing retention by 18%. Applied market mix modeling to improve marketing ROI, driving 28% increase in online sales. Led competitive intelligence initiatives contributing to 20% market share growth for key products.</p>
                     </div>
                     <div class="timeline-marker"></div>
                 </div>
 
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="timeline-content">
                         <h3>Data Analyst</h3>
                         <div class="date">[ May 2019 - Dec 2021 ]</div>
@@ -1741,28 +1939,28 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">credentials.verify</span></h2>
-                <p class="section-subtitle">Professional certifications and specialized training</p>
+                <p class="section-subtitle">Professional certifications and training</p>
             </div>
             <div class="card-grid">
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Applied Data Science</h3>
-                    <p>Certificate in Data Science – Applied Data Science (Creating Data Products in Production). Specialized training in deploying data science solutions to production environments.</p>
+                    <p>Certificate in Data Science: Applied Data Science (Creating Data Products in Production). Training in deploying data science solutions to production environments.</p>
                 </div>
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
                     <h3>Anti-Financial Crime</h3>
-                    <p>Data Science Applications in Anti-Financial Crime. Advanced techniques for detecting financial fraud, money laundering, and suspicious transaction patterns using machine learning.</p>
+                    <p>Data Science Applications in Anti-Financial Crime. Techniques for detecting financial fraud, money laundering, and suspicious transaction patterns using machine learning.</p>
                 </div>
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-database"></i></div>
                     <h3>Data Governance</h3>
-                    <p>Data Governance – Data Quality Frameworks. Comprehensive training on establishing enterprise data governance, quality assurance, and compliance frameworks.</p>
+                    <p>Data Governance: Data Quality Frameworks. Training on setting up enterprise data governance, quality assurance, and compliance frameworks.</p>
                 </div>
                 <div class="data-card reveal">
                     <div class="card-icon"><i class="fas fa-tasks"></i></div>
                     <h3>Project Governance</h3>
-                    <p>Project Control & Governance (Prospect33). Methodologies for managing data science projects with robust control mechanisms and stakeholder governance.</p>
+                    <p>Project Control & Governance (Prospect33). Methodologies for managing data science projects with clear controls and stakeholder governance.</p>
                 </div>
             </div>
         </div>
@@ -1773,7 +1971,7 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">education.log</span></h2>
-                <p class="section-subtitle">Academic foundation and research excellence</p>
+                <p class="section-subtitle">Academic background and research</p>
             </div>
             <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));">
                 <div class="data-card reveal">
@@ -1817,7 +2015,7 @@
         <div class="contact-container">
             <div class="section-header reveal">
                 <h2 class="section-title"><span class="highlight">connect.init</span></h2>
-                <p class="section-subtitle">Let's build something innovative together</p>
+                <p class="section-subtitle">Let's work on something together</p>
             </div>
             <form class="reveal" id="contactForm">
                 <div class="form-grid">
@@ -1841,6 +2039,7 @@
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i> Send Message
                 </button>
+                <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
             </form>
             <div style="text-align: center; margin-top: 2rem;">
                 <p style="color: var(--text-secondary);">
@@ -1854,21 +2053,21 @@
     <!-- Footer -->
     <footer>
         <div class="social-links" style="justify-content: center; margin-bottom: 1.5rem;">
-            <a href="https://www.linkedin.com/in/gichere/" target="_blank" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/gichere/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://medium.com/@francisgichere" target="_blank" title="Medium">
+            <a href="https://medium.com/@francisgichere" target="_blank" rel="noopener noreferrer" title="Medium" aria-label="Medium">
                 <i class="fab fa-medium-m"></i>
             </a>
-            <a href="mailto:francisgichere@gmail.com" title="Email">
+            <a href="mailto:francisgichere@gmail.com" title="Email" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://github.com/gichere" target="_blank" title="GitHub">
+            <a href="https://github.com/gichere" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
         </div>
         <p style="color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;">
-            © 2025 Francis Gichere | Built with AI & Data Science
+            © 2026 Francis Gichere | Built with AI & Data Science
         </p>
     </footer>
 
@@ -1951,8 +2150,11 @@
             requestAnimationFrame(animate);
         }
 
-        init();
-        animate();
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) {
+            init();
+            animate();
+        }
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
@@ -1965,12 +2167,14 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+            const open = mobileMenu.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
 
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
 
@@ -1983,7 +2187,7 @@
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
-                        behavior: 'smooth'
+                        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
                     });
                 }
             });
@@ -2098,6 +2302,22 @@
         window.addEventListener('scroll', animateSkills);
         animateSkills();
 
+        // Highlight the nav link for the section in view
+        const navAnchors = document.querySelectorAll('.nav-links a');
+        const navSections = Array.from(navAnchors).map(a => document.querySelector(a.getAttribute('href')));
+
+        const setActiveNav = () => {
+            const y = window.scrollY + 120;
+            let current = 0;
+            navSections.forEach((sec, idx) => {
+                if (sec && sec.offsetTop <= y) current = idx;
+            });
+            navAnchors.forEach((a, idx) => a.classList.toggle('active', idx === current));
+        };
+
+        window.addEventListener('scroll', setActiveNav, { passive: true });
+        setActiveNav();
+
         // Contact Form
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
@@ -2114,11 +2334,11 @@
             window.location.href = mailtoLink;
             contactForm.reset();
 
-            alert('Thank you! Your email client will open with the message. Please click send to complete.');
+            document.getElementById('formStatus').textContent = 'Your email app should open with the message ready. Press send to finish.';
         });
 
         // Typewriter Effect
-        const typewriterText = "Senior Data Scientist | ML Engineer";
+        const typewriterText = "Data & Analytics Manager | Data & AI Strategy";
         const typewriter = document.getElementById('typewriter');
         let i = 0;
 
